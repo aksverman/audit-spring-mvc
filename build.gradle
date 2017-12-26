@@ -1,0 +1,59 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+apply plugin: 'org.akhikhl.gretty'
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '1.0'
+/*jar {
+    manifest {
+        attributes 'Implementation-Title': 'Query Filter',
+                   'Implementation-Version': version
+    }
+}*/
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    
+	compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.9.RELEASE'
+
+
+	
+	compile ('mysql:mysql-connector-java:6.0.2')
+	compile group: 'org.audit4j', name: 'audit4j-core', version: '2.2.0'
+	
+	compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.2.2'
+	compile ('log4j:log4j:1.2.17')
+	compile 'javax.servlet:javax.servlet-api:3.1.0'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
+gretty {
+	httpPort = 8087
+	contextPath = '/auditspringmvc'
+}
+
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath 'org.akhikhl.gretty:gretty:+'
+	}
+}	
