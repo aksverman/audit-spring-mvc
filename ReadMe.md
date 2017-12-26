@@ -5,3 +5,10 @@
     
     #Observe the logs in root folder of project for audit
 3. Stop the application with 'appStop' gradle task. 
+
+#for reference 
+   https://www.programcreek.com/java-api-examples/index.php?api=org.audit4j.core.AuditManager
+   http://audit4j.org/documentation/
+   
+--> This example contains default behavior for appenders & layout for simplicity.
+--> Next will cover more detailed configuration with custom logging and layout.
